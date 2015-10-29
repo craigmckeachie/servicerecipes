@@ -1,31 +1,37 @@
 (function () {
     "use strict";
 
-    //constructor function
-    function DroidService() {
-        this.name = '';
+    // revealing module pattern
+    function DroidFactory() {
+        //private
+        function speakingPrivately () {
+            return "Hi I am " + this.name;
+        }
+
+        //public
+        return{
+            name: '',
+            speak: speakingPrivately
+        }
     }
 
-    DroidService.prototype.speak = function () {
-       return "Hi I am " + this.name;
-    }
-
-    var droid = new DroidService();
-    droid.name = 'r2-d2';
+    var droid = DroidFactory();
+    droid.name = 'bb-8';
     console.log(droid.speak());
 
 
     /* Angular Stuff*/
     angular.module('app', [])
-        .service('droid', DroidService)
+        .factory('droid', DroidFactory)
         .controller('DroidController', DroidController)
 
     function DroidController(droid) {
         var droidCtrl = this;
-        droid.name = 'r2-d2';
+        droid.name = 'bb-8';
         droidCtrl.message = droid.speak();
 
     }
+
 
 })();
 
