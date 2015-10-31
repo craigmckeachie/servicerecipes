@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body ng-controller="DroidController as droidCtrl">
+<body >
+<div ng-controller="DroidController as droidCtrl">
+    <h2>
+        {{droidCtrl.message}}
+    </h2>
 
+</div>
 
+<div ng-controller="AnotherDroidController as anotherDroidCtrl">
+    <h2>{{anotherDroidCtrl.message}}</h2>
 
-<h2>
-{{droidCtrl.message}}
-</h2>
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
