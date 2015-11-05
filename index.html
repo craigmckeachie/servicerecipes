@@ -2,22 +2,35 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>AngularJS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <style>[ng-cloak]{display:none;}</style>
 </head>
 <body >
-<div ng-controller="DroidController as droidCtrl">
-    <h2>
-        {{droidCtrl.message}}
-    </h2>
+<div class="container" ng-cloak>
+
+    <div class="row">
+    <nav class="cyan lighten-3">
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="left ">
+                <li class="active"><a href="./">Angular</a></li>
+            </ul>
+        </div>
+    </nav>
+    </div>
+
+    <div class="row">
+        <div class="col s12 grey lighten-3" ng-controller="DroidController as droidCtrl">
+            <h3>Service</h3>
+            <div class="card-panel">
+                <p class="flow-text">
+                {{droidCtrl.message}}
+                </p>
+            </div>
+        </div>
+    </div>
 
 </div>
-
-<div ng-controller="AnotherDroidController as anotherDroidCtrl">
-    <h2>{{anotherDroidCtrl.message}}</h2>
-
-</div>
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
 <script src="app.js"></script>
 </body>
