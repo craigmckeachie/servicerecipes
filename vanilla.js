@@ -1,20 +1,30 @@
 (function () {
     "use strict";
 
-    //constructor function
-    function DroidService() {
-        this.name = '';
+    //revealing module pattern
+    function droidFactory() {
+        function speakingPrivately() {
+            return "Hi I am " + this.name;
+        }
+        
+        return {
+            name: '',
+            speak: speakingPrivately
+        }
     }
-
-    DroidService.prototype.speak = function () {
-        return "Hi I am " + this.name;
-    }
-
-    var droid = new DroidService();
-    droid.name = 'r2-d2';
+    
+    var droid = droidFactory();
+    droid.name = 'c3-po';
     console.log(droid.speak());
+
     
 
+    
+    
+    
+    
+    
+    
     
 
 
