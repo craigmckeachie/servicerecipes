@@ -1,32 +1,19 @@
 (function () {
     "use strict";
 
-    //revealing module pattern
-    function droidFactory() {
-        function speakingPrivately() {
+    //value object
+    var droidValue = {
+        name: '',
+        speak: function () {
             return "Hi I am " + this.name;
         }
-        
-        return {
-            name: '',
-            speak: speakingPrivately
-        }
-    }
+    };
     
-    var droid = droidFactory();
-    droid.name = 'c3-po';
+    var droid = droidValue;
+    droid.name = 'bb-8';
     console.log(droid.speak());
-
     
-
-    
-    
-    
-    
-    
-    
-    
-
+       
 
 
 

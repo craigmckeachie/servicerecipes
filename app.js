@@ -1,27 +1,24 @@
 (function () {
     "use strict";
 
-    //revealing module pattern
-    function droidFactory() {
-        function speakingPrivately() {
+    //value object
+    var droidValue = {
+        name: '',
+        speak: function () {
             return "Hi I am " + this.name;
         }
-
-        return {
-            name: '',
-            speak: speakingPrivately
-        }
-    }
+    };
 
 
     angular.module('app', [])
-        .factory('droid', droidFactory)
+        .value('droid', droidValue)
         .controller('DroidController', DroidController)
 
     function DroidController(droid) {
         var droidCtrl = this;
-        droid.name = 'c3-po';
+        droid.name = 'bb-8';
         droidCtrl.message = droid.speak();
+
     }
 
 
