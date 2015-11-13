@@ -1,17 +1,30 @@
 (function () {
     "use strict";
 
-    //value object
-    var droidValue = {
-        name: '',
-        speak: function () {
-            return "Hi I am " + this.name;
+    //module pattern (configurable per app)
+    function droidProvider() {
+        var greeting = '';
+        return{
+            configure: function (settings) {
+                greeting = settings.greeting;
+            },
+            $get: function () {
+                return{
+                    name: '',
+                    speak: function () {
+                        return greeting + this.name;
+                    }
+                }
+            }
         }
-    };
-    
-    var droid = droidValue;
-    droid.name = 'bb-8';
+    }
+
+    var provider = droidProvider();
+    provider.configure({greeting: "Greetings I am "});
+    var droid = provider.$get();
+    droid.name = 'ig-88';
     console.log(droid.speak());
+    
     
        
 

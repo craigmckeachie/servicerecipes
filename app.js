@@ -1,22 +1,36 @@
 (function () {
     "use strict";
 
-    //value object
-    var droidValue = {
-        name: '',
-        speak: function () {
-            return "Hi I am " + this.name;
+    //module pattern (configurable per app)
+    function droidProvider() {
+        var greeting = '';
+        return{
+            configure: function (settings) {
+                greeting = settings.greeting;
+            },
+            $get: function () {
+                return{
+                    name: '',
+                    speak: function () {
+                        return greeting + this.name;
+                    }
+                }
+            }
         }
-    };
+    }
 
 
     angular.module('app', [])
-        .value('droid', droidValue)
+        .config(function (droidProvider) {
+            droidProvider.configure({greeting: "Greetings I am "})
+
+        })
+        .provider('droid', droidProvider)
         .controller('DroidController', DroidController)
 
     function DroidController(droid) {
         var droidCtrl = this;
-        droid.name = 'bb-8';
+        droid.name = 'ig-88'
         droidCtrl.message = droid.speak();
 
     }
