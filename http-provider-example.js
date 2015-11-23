@@ -3,7 +3,8 @@
 
     angular.module('app', [])
         .config(function ($httpProvider) {
-            $httpProvider.defaults.header.common.Authorization = 'Basic fdjks';
+            $httpProvider.defaults.cache = true;
+            
         })
         .controller('DemoController', DemoController)
 
